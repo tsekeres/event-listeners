@@ -39,7 +39,7 @@ newUser['password'] = 'abcd1234';
 
 console.log(newUser);
 
-// anonymus function within an object situation
+// Method or anonymus function within an object situation
 const newObject = {
   sayHello: function () {
     console.log('Hi, Everyone!');
