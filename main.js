@@ -12,5 +12,5 @@ function createTeenageGreeting(user, cb) {
   return cb(user);
 }
 
-console.log(createGreeting('Dad', sayLoveToUser));
-console.log(createGreeting('Dad', sayHateToUser));
+console.log(createTeenageGreeting('Dad', sayLoveToUser));
+console.log(createTeenageGreeting('Dad', sayHateToUser));
