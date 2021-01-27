@@ -70,7 +70,6 @@ const printToDom = (divId, textToPrint) => {
 
 const pieBuilder = (taco) => {
   let domString = '';
-
   for (let i = 0; i < taco.length; i++) {
     domString += `<div class="card my-2" style="width: 18rem;" id=${i}>
                     <div class="img-container" style="background-image: url('${taco[i].imageUrl}');"></div>
@@ -88,36 +87,40 @@ const pieBuilder = (taco) => {
   printToDom('#pies', domString);
 }
 
-
 const handleButtonClick = (e) => {
   const buttonId = e.target.id;
 
+  // CHANGING BG COLOR BASED ON BUTTON CLICK
   if (buttonId === 'Trinity') {
     // DARK MODE
     document.querySelector('body').style.backgroundColor = '#000';
-
   } else if (buttonId === 'Doc') {
+    // LIGHT MODE
     document.querySelector('body').style.backgroundColor = '#FFF';
-
   } else if (buttonId === 'Aja') {
-    document.querySelector('body').style.backgroundColor = '#808080'; 
-
+    // MEDIUM MODE
+    document.querySelector('body').style.backgroundColor = '#808080';
   } else if (buttonId === 'All') {
-    document.querySelector('body').style.backgroundColor = 'rgb(175, 196, 175';
-
+    // DEFAULT
+    document.querySelector('body').style.backgroundColor = 'rgb(175, 196, 175)';
   }
 
-  // Update the pies based on buttin click
+  // UPDATE THE PIES BASED ON BUTTON CLICKED
   const selectedPies = [];
-
+  // pies[0].instructor // 'Doc'
   for (let i = 0; i < pies.length; i++) {
-    if(pies[i].instructor === buttonId) {
+    if (pies[i].instructor === buttonId) {
       selectedPies.push(pies[i]);
     }
   }
-  
-  console.log(selectedPies);
-  
+
+  if (buttonId === 'All') {
+    // PRINT ALL THE PIES
+    pieBuilder(pies);
+  } else {
+    pieBuilder(selectedPies);
+  }
+
 }
 
 const buttonEvents = () => {
@@ -125,7 +128,6 @@ const buttonEvents = () => {
   document.querySelector('#Doc').addEventListener('click', handleButtonClick);
   document.querySelector('#Aja').addEventListener('click', handleButtonClick);
   document.querySelector('#Trinity').addEventListener('click', handleButtonClick);
-
 }
 
 const init = () => {
